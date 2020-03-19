@@ -33,6 +33,8 @@ The image set was too small to train the
 network so we augumented the images
 resunting into a total of 1650 pictures
 and 1650 paintings.
+The images were downscaled to 224x224 to
+reduce the computing time and to better fit to our model
 
 The optimizer used was Adam Optimiser with a step
 of 0.0001 and with CategoricalCrossentropy as loss.
