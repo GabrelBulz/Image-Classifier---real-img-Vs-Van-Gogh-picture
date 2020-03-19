@@ -13,25 +13,19 @@ model = tf.keras.models.load_model('trained_goh_model.h5')
 
 prediction = model.predict_generator(valid_batches, steps=1, verbose=0)
 
-# ratio=0
+ratio=0
 
-# for _ in range(25):
-#     batch = next(valid_batches)
-#     prediction = model.predict_on_batch(batch)
-#     for i in range(20):
-#         # get index of the higher predition probability
-#         prediction_index = (np.where(prediction[i] == np.amax(prediction[i]))[0] == 0)
-#         # get batch labeling
-#         label = batch[1] 
-#         real_index = (label[i][0] == 1)
+for _ in range(25):
+    batch = next(valid_batches)
+    prediction = model.predict_on_batch(batch)
+    for i in range(20):
+        # get index of the higher predition probability
+        prediction_index = (np.where(prediction[i] == np.amax(prediction[i]))[0] == 0)
+        # get batch labeling
+        label = batch[1] 
+        real_index = (label[i][0] == 1)
 
-#         if(prediction_index == real_index):
-#             ratio = ratio + 1
+        if(prediction_index == real_index):
+            ratio = ratio + 1
 
-# print(ratio/500)
-
-batch = next(valid_batches)
-prediction = model.predict_on_batch(batch)
-
-print(batch[1])
-print(prediction)
+print(ratio/500)
